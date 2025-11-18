@@ -30,7 +30,7 @@ public class HashtagEntity {
     )
     private List<ReviewEntity> taggedReviews = new ArrayList<>();
 
-    //해시태그 - 작가
+    //해시태그 - 소설
     @ManyToMany
     @JoinTable(name = "novel_hashtag",
             joinColumns = @JoinColumn(name = "hashtag_id"),

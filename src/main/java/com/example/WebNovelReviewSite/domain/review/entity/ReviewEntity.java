@@ -25,28 +25,36 @@ public class ReviewEntity {
 
     //유저 FK
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="user_id",nullable = false)
+    @JoinColumn(name="user_id")
     private UserEntity user;
 
     //소설 FK
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "novel_id",nullable = false)
+    @JoinColumn(name = "novel_id")
     private NovelEntity novel;
 
     //리뷰 내용
-    @Column(name="content", length = 255,nullable = false)
+    @Column(name="content", length = 255)
     private String content;
 
     //별점
-    @Column(name="star", precision = 2, scale = 1,nullable = false)
+    @Column(name="star", precision = 2, scale = 1)
     private BigDecimal star;
 
     //조회수
-    @Column(name = "views",nullable = false)
+    @Column(name = "views")
     private Long views;
 
     //리뷰 - 해시태그
     @ManyToMany(mappedBy = "taggedReviews")
     private List<HashtagEntity> hashtags = new ArrayList<>();
+
+    //좋아요
+    @ManyToMany
+    @JoinTable(name = "like",
+                joinColumns = @JoinColumn(name = "review_id"),
+                inverseJoinColumns = @JoinColumn(name = "user_id")
+    )
+    private List<UserEntity> userList = new ArrayList<>();
 
 }

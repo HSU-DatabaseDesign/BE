@@ -1,9 +1,7 @@
 package com.example.WebNovelReviewSite.domain.author.entity;
 
-import com.example.WebNovelReviewSite.domain.hashtag.entity.HashtagEntity;
 import com.example.WebNovelReviewSite.domain.user.entity.UserEntity;
 import jakarta.persistence.*;
-import java.util.*;
 import lombok.Getter;
 import lombok.Setter;
 

@@ -3,6 +3,7 @@ package com.example.WebNovelReviewSite.domain.user.entity;
 import com.example.WebNovelReviewSite.domain.author.entity.AuthorInfoEntity;
 import com.example.WebNovelReviewSite.domain.badge.entity.BadgeEntity;
 import com.example.WebNovelReviewSite.domain.novel.entity.CollectionEntity;
+import com.example.WebNovelReviewSite.domain.review.entity.ReviewEntity;
 import com.example.WebNovelReviewSite.domain.user.enums.Role;
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -39,9 +40,6 @@ public class UserEntity {
     private Role role;
 
     //유저 - 뱃지
-    //ERD에 맞춰 명시적으로 테이블 생성
-    // 주인은 JoinTable 명시
-    // 자식은 MappedBy -> 주인의 멤버변수
     @ManyToMany
     @JoinTable(
             name ="user_badge",
@@ -50,11 +48,7 @@ public class UserEntity {
     )
     private Set<BadgeEntity> badges = new HashSet<>();
 
-    //유저 - 작가
-    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private AuthorInfoEntity authorInfo;
-
-    //유저 - 유저
+    //팔로우 관계
     @ManyToMany
     @JoinTable(
             name = "follow",
@@ -66,7 +60,19 @@ public class UserEntity {
     @ManyToMany(mappedBy = "followings")
     private Set<UserEntity> followers = new HashSet<>();
 
+    //유저 - 작가
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private AuthorInfoEntity authorInfo;
+
     //유저 - 컬렉션
     @OneToMany(mappedBy = "user")
     private List<CollectionEntity> collections = new ArrayList<>();
+
+    //유저 리뷰
+    @OneToMany(mappedBy = "user")
+    private List<ReviewEntity> reviews = new ArrayList<>();
+
+    //좋아요
+    @ManyToMany(mappedBy = "userList")
+    private List<ReviewEntity> likeList = new ArrayList<>();
 }

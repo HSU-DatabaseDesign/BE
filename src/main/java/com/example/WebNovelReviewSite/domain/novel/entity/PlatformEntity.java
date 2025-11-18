@@ -6,8 +6,6 @@ import lombok.Getter;
 import lombok.Setter;
 import java.util.*;
 
-import java.util.ArrayList;
-
 @Getter
 @Setter
 @Entity
@@ -16,13 +14,13 @@ public class PlatformEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "platform_id")
-    private Long id;
+    private Long platformId;
 
     @Column(name = "platform_name",length = 20)
-    private String name;
+    private String platformName;
 
     @Column(name = "platform_image", length = 255)
-    private String image;
+    private String platformImage;
 
     //플랫폼 - 소설
     @ManyToMany

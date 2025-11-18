@@ -18,6 +18,7 @@ public class CollectionEntity {
     @Column(name = "collection_id")
     private Long collectionId;
 
+    //유저 1 : 컬렉션 M
     @ManyToOne
     @JoinColumn(name = "user_id")
     private UserEntity user;
