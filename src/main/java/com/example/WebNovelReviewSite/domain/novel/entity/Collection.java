@@ -1,6 +1,6 @@
 package com.example.WebNovelReviewSite.domain.novel.entity;
 
-import com.example.WebNovelReviewSite.domain.user.entity.UserEntity;
+import com.example.WebNovelReviewSite.domain.user.entity.User;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,7 +11,7 @@ import java.util.*;
 @Setter
 @Entity
 @Table(name = "collection")
-public class CollectionEntity {
+public class Collection {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,7 +21,7 @@ public class CollectionEntity {
     //유저 1 : 컬렉션 M
     @ManyToOne
     @JoinColumn(name = "user_id")
-    private UserEntity user;
+    private User user;
 
     @Column(name = "collection_name",length = 20)
     private String collectionName;
@@ -35,5 +35,5 @@ public class CollectionEntity {
             joinColumns = @JoinColumn(name = "collection_id"),
             inverseJoinColumns = @JoinColumn(name = "novel_id")
     )
-    private List<NovelEntity> novelInCollection = new ArrayList<>();
+    private List<Novel> novelInCollection = new ArrayList<>();
 }

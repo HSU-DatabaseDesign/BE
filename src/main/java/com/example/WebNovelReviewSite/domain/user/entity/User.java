@@ -1,9 +1,9 @@
 package com.example.WebNovelReviewSite.domain.user.entity;
 
-import com.example.WebNovelReviewSite.domain.author.entity.AuthorInfoEntity;
-import com.example.WebNovelReviewSite.domain.badge.entity.BadgeEntity;
-import com.example.WebNovelReviewSite.domain.novel.entity.CollectionEntity;
-import com.example.WebNovelReviewSite.domain.review.entity.ReviewEntity;
+import com.example.WebNovelReviewSite.domain.author.entity.AuthorInfo;
+import com.example.WebNovelReviewSite.domain.badge.entity.Badge;
+import com.example.WebNovelReviewSite.domain.novel.entity.Collection;
+import com.example.WebNovelReviewSite.domain.review.entity.Review;
 import com.example.WebNovelReviewSite.domain.user.enums.Role;
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -15,7 +15,7 @@ import java.util.*;
 @Getter
 @Setter
 @Table(name = "user")
-public class UserEntity {
+public class User {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "user_id")
     private Long userId;
@@ -46,7 +46,7 @@ public class UserEntity {
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "badge_id")
     )
-    private Set<BadgeEntity> badges = new HashSet<>();
+    private Set<Badge> badges = new HashSet<>();
 
     //팔로우 관계
     @ManyToMany
@@ -55,24 +55,24 @@ public class UserEntity {
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "target_id")
     )
-    private Set<UserEntity>  followings = new HashSet<>();
+    private Set<User>  followings = new HashSet<>();
 
     @ManyToMany(mappedBy = "followings")
-    private Set<UserEntity> followers = new HashSet<>();
+    private Set<User> followers = new HashSet<>();
 
     //유저 - 작가
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private AuthorInfoEntity authorInfo;
+    private AuthorInfo authorInfo;
 
     //유저 - 컬렉션
     @OneToMany(mappedBy = "user")
-    private List<CollectionEntity> collections = new ArrayList<>();
+    private List<Collection> collections = new ArrayList<>();
 
     //유저 리뷰
     @OneToMany(mappedBy = "user")
-    private List<ReviewEntity> reviews = new ArrayList<>();
+    private List<Review> reviews = new ArrayList<>();
 
     //좋아요
     @ManyToMany(mappedBy = "userList")
-    private List<ReviewEntity> likeList = new ArrayList<>();
+    private List<Review> likeList = new ArrayList<>();
 }

@@ -1,7 +1,7 @@
 package com.example.WebNovelReviewSite.domain.hashtag.entity;
 
-import com.example.WebNovelReviewSite.domain.novel.entity.NovelEntity;
-import com.example.WebNovelReviewSite.domain.review.entity.ReviewEntity;
+import com.example.WebNovelReviewSite.domain.novel.entity.Novel;
+import com.example.WebNovelReviewSite.domain.review.entity.Review;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,7 +12,7 @@ import java.util.*;
 @Setter
 @Entity
 @Table(name ="hashtag")
-public class HashtagEntity {
+public class Hashtag {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,7 +28,7 @@ public class HashtagEntity {
             joinColumns = @JoinColumn(name = "hashtag_id"),
             inverseJoinColumns = @JoinColumn(name = "review_id")
     )
-    private List<ReviewEntity> taggedReviews = new ArrayList<>();
+    private List<Review> taggedReviews = new ArrayList<>();
 
     //해시태그 - 소설
     @ManyToMany
@@ -36,5 +36,5 @@ public class HashtagEntity {
             joinColumns = @JoinColumn(name = "hashtag_id"),
             inverseJoinColumns = @JoinColumn(name = "novel_id")
     )
-    private List<NovelEntity> taggedNovels = new ArrayList<>();
+    private List<Novel> taggedNovels = new ArrayList<>();
 }

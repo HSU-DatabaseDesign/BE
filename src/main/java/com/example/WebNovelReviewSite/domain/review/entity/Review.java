@@ -1,9 +1,9 @@
 package com.example.WebNovelReviewSite.domain.review.entity;
 
 
-import com.example.WebNovelReviewSite.domain.hashtag.entity.HashtagEntity;
-import com.example.WebNovelReviewSite.domain.novel.entity.NovelEntity;
-import com.example.WebNovelReviewSite.domain.user.entity.UserEntity;
+import com.example.WebNovelReviewSite.domain.hashtag.entity.Hashtag;
+import com.example.WebNovelReviewSite.domain.novel.entity.Novel;
+import com.example.WebNovelReviewSite.domain.user.entity.User;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -16,7 +16,7 @@ import java.util.*;
 @Setter
 @Entity
 @Table(name = "review")
-public class ReviewEntity {
+public class Review {
 
     // 리뷰키
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,12 +26,12 @@ public class ReviewEntity {
     //유저 FK
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="user_id")
-    private UserEntity user;
+    private User user;
 
     //소설 FK
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "novel_id")
-    private NovelEntity novel;
+    private Novel novel;
 
     //리뷰 내용
     @Column(name="content", length = 255)
@@ -47,7 +47,7 @@ public class ReviewEntity {
 
     //리뷰 - 해시태그
     @ManyToMany(mappedBy = "taggedReviews")
-    private List<HashtagEntity> hashtags = new ArrayList<>();
+    private List<Hashtag> hashtags = new ArrayList<>();
 
     //좋아요
     @ManyToMany
@@ -55,6 +55,6 @@ public class ReviewEntity {
                 joinColumns = @JoinColumn(name = "review_id"),
                 inverseJoinColumns = @JoinColumn(name = "user_id")
     )
-    private List<UserEntity> userList = new ArrayList<>();
+    private List<User> userList = new ArrayList<>();
 
 }

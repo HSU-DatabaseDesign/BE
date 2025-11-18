@@ -2,7 +2,7 @@ package com.example.WebNovelReviewSite.domain.badge.entity;
 
 
 import com.example.WebNovelReviewSite.domain.badge.enums.BadgeType;
-import com.example.WebNovelReviewSite.domain.user.entity.UserEntity;
+import com.example.WebNovelReviewSite.domain.user.entity.User;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -14,7 +14,7 @@ import java.util.Set;
 @Setter
 @Entity
 @Table(name = "badge")
-public class BadgeEntity {
+public class Badge {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "badge_id")
@@ -44,5 +44,5 @@ public class BadgeEntity {
 
     //뱃지 - 유저 관계
     @ManyToMany(mappedBy = "badges")
-    private Set<UserEntity> users = new HashSet<>();
+    private Set<User> users = new HashSet<>();
 }

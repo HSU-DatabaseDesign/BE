@@ -1,10 +1,10 @@
 package com.example.WebNovelReviewSite.domain.novel.entity;
 
-import com.example.WebNovelReviewSite.domain.hashtag.entity.HashtagEntity;
+import com.example.WebNovelReviewSite.domain.hashtag.entity.Hashtag;
 import com.example.WebNovelReviewSite.domain.novel.enums.Genre;
 import com.example.WebNovelReviewSite.domain.novel.enums.NovelStatus;
 import com.example.WebNovelReviewSite.domain.novel.enums.RestrictedType;
-import com.example.WebNovelReviewSite.domain.review.entity.ReviewEntity;
+import com.example.WebNovelReviewSite.domain.review.entity.Review;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -17,7 +17,7 @@ import java.util.List;
 @Table(name = "novel")
 @Getter
 @Setter
-public class NovelEntity {
+public class Novel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -50,21 +50,21 @@ public class NovelEntity {
 
     //소설 - 컬렉션
     @ManyToMany(mappedBy = "novelInCollection")
-    private List<CollectionEntity> inCollections = new ArrayList<>();
+    private List<Collection> inCollections = new ArrayList<>();
 
     //해시태그 - 소설
     @ManyToMany(mappedBy = "taggedNovels")
-    private List<HashtagEntity> hashtags = new ArrayList<>();
+    private List<Hashtag> hashtags = new ArrayList<>();
 
     //소설 - 리뷰
     @OneToMany(mappedBy = "novel")
-    private List<ReviewEntity> reviews = new ArrayList<>();
+    private List<Review> reviews = new ArrayList<>();
 
     //소설 - 플랫폼
     @ManyToMany(mappedBy = "novelsInPlatform")
-    private List<PlatformEntity> platforms = new ArrayList<>();
+    private List<Platform> platforms = new ArrayList<>();
 
     //소설 - 소설 이미지
     @OneToMany(mappedBy = "novel")
-    private List<NovelImageEntity> images = new ArrayList<>();
+    private List<NovelImage> images = new ArrayList<>();
 }

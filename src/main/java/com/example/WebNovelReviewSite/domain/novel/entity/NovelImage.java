@@ -8,7 +8,7 @@ import lombok.Setter;
 @Setter
 @Entity
 @Table(name = "novel_image")
-public class NovelImageEntity {
+public class NovelImage {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "image_id")
@@ -16,7 +16,7 @@ public class NovelImageEntity {
 
     @ManyToOne
     @JoinColumn(name = "novel_id")
-    private NovelEntity novel;
+    private Novel novel;
 
     @Column(name = "image_url")
     private String imageUrl;

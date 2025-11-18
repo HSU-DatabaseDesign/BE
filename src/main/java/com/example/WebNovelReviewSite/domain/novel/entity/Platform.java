@@ -10,7 +10,7 @@ import java.util.*;
 @Setter
 @Entity
 @Table(name = "platform")
-public class PlatformEntity {
+public class Platform {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "platform_id")
@@ -27,6 +27,6 @@ public class PlatformEntity {
     @JoinTable(name = "novel_platform",
             joinColumns = @JoinColumn(name = "platform_id"),
             inverseJoinColumns = @JoinColumn(name = "novel_id"))
-    private List<NovelEntity> novelsInPlatform = new ArrayList<>();
+    private List<Novel> novelsInPlatform = new ArrayList<>();
 
 }

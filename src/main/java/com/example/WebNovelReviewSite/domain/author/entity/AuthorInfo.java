@@ -1,6 +1,6 @@
 package com.example.WebNovelReviewSite.domain.author.entity;
 
-import com.example.WebNovelReviewSite.domain.user.entity.UserEntity;
+import com.example.WebNovelReviewSite.domain.user.entity.User;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -9,7 +9,7 @@ import lombok.Setter;
 @Setter
 @Entity
 @Table(name = "author_info")
-public class AuthorInfoEntity {
+public class AuthorInfo {
 
     @Id
     @Column(name = "user_id")
@@ -18,7 +18,7 @@ public class AuthorInfoEntity {
     @OneToOne(fetch = FetchType.LAZY)
     @MapsId // 유저 키가 FK이면서 PK인 경우
     @JoinColumn(name="user_id")
-    private UserEntity user;
+    private User user;
 
     @Column(name = "pen_name", length = 20)
     private String penName;
