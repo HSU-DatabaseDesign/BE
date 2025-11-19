@@ -6,8 +6,7 @@ import com.example.WebNovelReviewSite.domain.novel.enums.NovelStatus;
 import com.example.WebNovelReviewSite.domain.novel.enums.RestrictedType;
 import com.example.WebNovelReviewSite.domain.review.entity.Review;
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 import org.hibernate.annotations.Fetch;
 
 import java.time.LocalDateTime;
@@ -15,9 +14,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "novel")
 @Getter
 @Setter
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@AllArgsConstructor
+@Table(name = "novel")
 public class Novel {
 
     @Id

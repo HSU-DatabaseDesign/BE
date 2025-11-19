@@ -3,14 +3,15 @@ package com.example.WebNovelReviewSite.domain.hashtag.entity;
 import com.example.WebNovelReviewSite.domain.novel.entity.Novel;
 import com.example.WebNovelReviewSite.domain.review.entity.Review;
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import java.util.*;
 
+@Entity
 @Getter
 @Setter
-@Entity
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@AllArgsConstructor
 @Table(name ="hashtag")
 public class Hashtag {
 

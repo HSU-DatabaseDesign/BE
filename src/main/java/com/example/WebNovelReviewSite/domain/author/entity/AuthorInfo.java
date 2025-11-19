@@ -2,12 +2,13 @@ package com.example.WebNovelReviewSite.domain.author.entity;
 
 import com.example.WebNovelReviewSite.domain.user.entity.User;
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
+@Entity
 @Getter
 @Setter
-@Entity
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@AllArgsConstructor
 @Table(name = "author_info")
 public class AuthorInfo {
 
@@ -17,7 +18,7 @@ public class AuthorInfo {
 
     @OneToOne(fetch = FetchType.LAZY)
     @MapsId// 유저 키가 FK이면서 PK인 경우, 속성이 같아서 안써도 된다.
-    @JoinColumn(name="user_id")
+    @JoinColumn(name = "user_id")
     private User user;
 
     @Column(name = "pen_name", length = 20)

@@ -5,16 +5,17 @@ import com.example.WebNovelReviewSite.domain.hashtag.entity.Hashtag;
 import com.example.WebNovelReviewSite.domain.novel.entity.Novel;
 import com.example.WebNovelReviewSite.domain.user.entity.User;
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.*;
 
+@Entity
 @Getter
 @Setter
-@Entity
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@AllArgsConstructor
 @Table(name = "review")
 public class Review {
 

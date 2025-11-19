@@ -2,13 +2,15 @@ package com.example.WebNovelReviewSite.domain.novel.entity;
 
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
+
 import java.util.*;
 
+@Entity
 @Getter
 @Setter
-@Entity
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@AllArgsConstructor
 @Table(name = "platform")
 public class Platform {
     @Id
