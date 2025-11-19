@@ -22,19 +22,11 @@ public class Hashtag {
     @Column(name = "hashtag_name",length = 10)
     private String hashtagName;
 
-    //해시태그 - 리뷰
-    @ManyToMany
-    @JoinTable(name = "review_hashtag",
-            joinColumns = @JoinColumn(name = "hashtag_id"),
-            inverseJoinColumns = @JoinColumn(name = "review_id")
-    )
-    private List<Review> taggedReviews = new ArrayList<>();
+    //hashtag- review_hashtag
+    @OneToMany(mappedBy = "hashtag")
+    private List<Review> reviews = new ArrayList<>();
 
-    //해시태그 - 소설
-    @ManyToMany
-    @JoinTable(name = "novel_hashtag",
-            joinColumns = @JoinColumn(name = "hashtag_id"),
-            inverseJoinColumns = @JoinColumn(name = "novel_id")
-    )
-    private List<Novel> taggedNovels = new ArrayList<>();
+    //hashtag - novel_hashtag
+    @OneToMany(mappedBy = "hashtag")
+    private List<Novel> novels = new ArrayList<>();
 }

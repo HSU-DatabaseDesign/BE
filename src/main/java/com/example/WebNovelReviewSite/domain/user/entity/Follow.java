@@ -10,7 +10,7 @@ import lombok.*;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
 public class Follow {
-
+    
     @EmbeddedId
     private FollowId id;
 

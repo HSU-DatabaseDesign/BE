@@ -8,6 +8,7 @@ import com.example.WebNovelReviewSite.domain.review.entity.Review;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.Fetch;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -48,23 +49,23 @@ public class Novel {
     @Column(name = "registration_date")
     private LocalDateTime registrationDate;
 
-    //소설 - 컬렉션
-    @ManyToMany(mappedBy = "novelInCollection")
-    private List<Collection> inCollections = new ArrayList<>();
+    //novel - collected_novel
+    @OneToMany(mappedBy = "novel",fetch = FetchType.LAZY)
+    private List<Collection> collections = new ArrayList<>();
 
-    //해시태그 - 소설
-    @ManyToMany(mappedBy = "taggedNovels")
+    //novel - novel_hashtag
+    @OneToMany(mappedBy = "novel",fetch = FetchType.LAZY)
     private List<Hashtag> hashtags = new ArrayList<>();
 
-    //소설 - 리뷰
+    //novel - review
     @OneToMany(mappedBy = "novel")
     private List<Review> reviews = new ArrayList<>();
 
-    //소설 - 플랫폼
-    @ManyToMany(mappedBy = "novelsInPlatform")
+    //novel - novel_platform
+    @OneToMany(mappedBy = "novel")
     private List<Platform> platforms = new ArrayList<>();
 
-    //소설 - 소설 이미지
+    //novel - novel_image
     @OneToMany(mappedBy = "novel")
     private List<NovelImage> images = new ArrayList<>();
 }

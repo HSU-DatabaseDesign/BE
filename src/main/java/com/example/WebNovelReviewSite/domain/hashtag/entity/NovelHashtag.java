@@ -20,7 +20,7 @@ public class NovelHashtag {
     @JoinColumn(name ="novel_id",nullable = false)
     private Novel novel;
 
-    @MapsId("hashtag_id")
+    @MapsId("hashtagId")
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name ="hashtag_id",nullable = false)
     private Hashtag hashtag;

@@ -1,6 +1,5 @@
 package com.example.WebNovelReviewSite.domain.badge.entity;
 
-
 import com.example.WebNovelReviewSite.domain.badge.enums.BadgeType;
 import com.example.WebNovelReviewSite.domain.user.entity.UserBadge;
 import jakarta.persistence.*;

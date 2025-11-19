@@ -22,11 +22,7 @@ public class Platform {
     @Column(name = "platform_image", length = 255)
     private String platformImage;
 
-    //플랫폼 - 소설
-    @ManyToMany
-    @JoinTable(name = "novel_platform",
-            joinColumns = @JoinColumn(name = "platform_id"),
-            inverseJoinColumns = @JoinColumn(name = "novel_id"))
-    private List<Novel> novelsInPlatform = new ArrayList<>();
-
+    //platform - novel_platform
+    @OneToMany(mappedBy = "platform")
+    private List<Novel> novels;
 }

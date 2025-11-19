@@ -18,17 +18,17 @@ import java.util.*;
 @Table(name = "review")
 public class Review {
 
-    // 리뷰키
+    // 리뷰 PK
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "review_id")
     private Long reviewId;
 
-    //유저 FK
+    //user - review
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="user_id")
     private User user;
 
-    //소설 FK
+    //review - novel
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "novel_id")
     private Novel novel;

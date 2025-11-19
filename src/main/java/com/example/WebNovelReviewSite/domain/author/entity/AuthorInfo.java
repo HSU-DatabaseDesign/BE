@@ -16,7 +16,7 @@ public class AuthorInfo {
     private Long userId;
 
     @OneToOne(fetch = FetchType.LAZY)
-    @MapsId // 유저 키가 FK이면서 PK인 경우
+    @MapsId// 유저 키가 FK이면서 PK인 경우, 속성이 같아서 안써도 된다.
     @JoinColumn(name="user_id")
     private User user;
 

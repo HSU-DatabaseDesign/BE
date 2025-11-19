@@ -12,7 +12,7 @@ import lombok.*;
 @AllArgsConstructor
 public class UserBadge {
 
-    //복합키 클래스를PK로 같는 엔티티
+    //복합키 클래스를 PK로 같는 엔티티
     @EmbeddedId
     private UserBadgeId id;
 

@@ -1,4 +1,4 @@
-package com.example.WebNovelReviewSite.domain.review.entity;
+package com.example.WebNovelReviewSite.domain.novel.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
@@ -12,11 +12,11 @@ import java.io.Serializable;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
 @EqualsAndHashCode
-public class likeId implements Serializable {
+public class CollectedNovelId implements Serializable {
 
-    @Column(name = "user_id")
-    private Long userId;
+    @Column(name="collection_id")
+    private Long collectionId;
 
-    @Column(name = "review_id")
-    private Long reviewId;
+    @Column(name = "novel_id")
+    private Long novelId;
 }

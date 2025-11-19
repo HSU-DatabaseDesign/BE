@@ -6,14 +6,15 @@ import com.example.WebNovelReviewSite.domain.novel.entity.Collection;
 import com.example.WebNovelReviewSite.domain.review.entity.Review;
 import com.example.WebNovelReviewSite.domain.user.enums.Role;
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import java.util.*;
 
 @Entity
 @Getter
 @Setter
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@AllArgsConstructor
 @Table(name = "user")
 public class User {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -47,18 +48,19 @@ public class User {
     @OneToMany(mappedBy = "follower")
     private Set<Follow> followings = new HashSet<>();
 
+    //user - follow
     @OneToMany(mappedBy = "target")
     private Set<Follow> followers = new HashSet<>();
 
-    //유저 - 작가
+    //user - author_info
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private AuthorInfo authorInfo;
 
-    //유저 - 컬렉션
+    //user - collection
     @OneToMany(mappedBy = "user")
     private List<Collection> collections = new ArrayList<>();
 
-    //유저 리뷰
+    //user - review
     @OneToMany(mappedBy = "user")
     private List<Review> reviews = new ArrayList<>();
 

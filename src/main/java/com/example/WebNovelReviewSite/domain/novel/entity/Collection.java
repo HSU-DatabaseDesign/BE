@@ -18,7 +18,7 @@ public class Collection {
     @Column(name = "collection_id")
     private Long collectionId;
 
-    //유저 1 : 컬렉션 M
+    //user - collection
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
@@ -29,11 +29,7 @@ public class Collection {
     @Column(name = "content",length = 255)
     private String content;
 
-    //컬렉션 - 소설
-    @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(name = "collected_novel",
-            joinColumns = @JoinColumn(name = "collection_id"),
-            inverseJoinColumns = @JoinColumn(name = "novel_id")
-    )
-    private List<Novel> novelInCollection = new ArrayList<>();
+    //collection - collected_novel
+    @OneToMany(mappedBy = "collection")
+    private List<Novel> novels = new ArrayList<>();
 }

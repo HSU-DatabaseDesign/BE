@@ -18,6 +18,6 @@ public class NovelImage {
     @JoinColumn(name = "novel_id")
     private Novel novel;
 
-    @Column(name = "image_url")
+    @Column(name = "image_url",length = 255)
     private String imageUrl;
 }

@@ -6,7 +6,8 @@ import lombok.*;
 
 import java.io.Serializable;
 
-//복합 키 클래스
+// user_badge pk
+// 복합 키 클래스
 @Embeddable
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
